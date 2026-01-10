@@ -1,7 +1,7 @@
 .PHONY: all ci build test clean install lint fmt help install-lint
 
 # Build variables
-BINARY_NAME := mcp-tidy
+BINARY_NAME := memtui
 VERSION ?= $(shell git describe --tags --always --dirty 2>/dev/null || echo "dev")
 BUILD_TIME := $(shell date -u '+%Y-%m-%d_%H:%M:%S')
 LDFLAGS := -ldflags "-s -w -X main.Version=$(VERSION) -X main.BuildTime=$(BUILD_TIME)"
@@ -18,7 +18,7 @@ ci: install-lint lint test
 
 # Build the binary
 build:
-	$(GO) build $(LDFLAGS) -o $(BINARY_NAME) ./cmd/mcp-tidy
+	$(GO) build $(LDFLAGS) -o $(BINARY_NAME) ./cmd/memtui
 
 # Run tests
 test:
@@ -41,7 +41,7 @@ clean:
 
 # Install to GOPATH/bin
 install:
-	$(GO) install $(LDFLAGS) ./cmd/mcp-tidy
+	$(GO) install $(LDFLAGS) ./cmd/memtui
 
 # Install golangci-lint
 install-lint:
